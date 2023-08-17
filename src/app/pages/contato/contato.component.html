@@ -85,5 +85,13 @@
 
     <!-- {{cidade.value}}     -->
 
+    <ul>
+      <li *ngFor="let item of contatos | async">
+        nome: {{ item.nome }} 
+        email: {{item.email}}
+      </li>
+    </ul>
 
   </div>
+
+  
