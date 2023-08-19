@@ -28,7 +28,7 @@ export const routes: Routes = [
     {
         path: 'contatos-crud',
         loadChildren: ()=>
-            import('./contatos-crud/contatos.routes').then((routes) => routes.contatoRouter ),
+            import('./pages/contatos-crud/contatos.routes').then((routes) => routes.contatoRouter ),
     },
     {
         path: '**',
