@@ -3,13 +3,12 @@ import { Routes } from '@angular/router';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ProjetosComponent } from './pages/projetos/projetos.component';
-import { ContatoComponent } from './pages/contato/contato.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: InicioComponent,
-        title: 'inicio-component'
+        redirectTo: 'inicio',
+        pathMatch: 'full'
     },
     {
         path: 'inicio',
@@ -27,9 +26,9 @@ export const routes: Routes = [
         title: 'projetos-component'
     },
     {
-        path: 'contato',
-        component: ContatoComponent,
-        title: 'contato-component'
+        path: 'contatos-crud',
+        loadChildren: ()=>
+            import('./contatos-crud/contatos.routes').then((routes) => routes.contatoRouter ),
     },
     {
         path: '**',

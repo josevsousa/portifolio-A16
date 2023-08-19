@@ -1,3 +1,4 @@
+
 <div class="container">
     <br>
     <div class="row">
@@ -44,54 +45,39 @@
         </div>     
       </div>
       <div class="col-sm">
-        <h2 class="subTitulo">
-          MSG
-        </h2>
 
-        <form [formGroup]="formulario">
-            <div class="row mb-3">
-              <div class="col-sm-10">
-                <input type="email" formControlName="nome" placeholder="nome" class="form-control" id="nome" >
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-sm-10">
-                <input type="email" formControlName="email" placeholder="email" class="form-control" id="email" >
-              </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-sm-10">
-                    <textarea type="text" class="form-control" formControlName="messagem" id="messagem" placeholder="Sua messagem" rows="3"></textarea>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid" (click)="sendForm()">Send</button>
-        </form>
+<h2 class="subTitulo">
+    MSG
+  </h2>
 
-        <br>
-        <div  class="enviado" *ngIf="enviado">
-          <img src="../assets/images/enviado.png" alt="">  
-          <h3>Enviado com sucesso!</h3>
+  <form [formGroup]="formulario">
+      <div class="row mb-3">
+        <div class="col-sm-10">
+          <input type="email" formControlName="nome" placeholder="nome" class="form-control" id="nome" >
         </div>
-        <br>
-        <br>
       </div>
-      
-    </div>
+      <div class="row mb-3">
+        <div class="col-sm-10">
+          <input type="email" formControlName="email" placeholder="email" class="form-control" id="email" >
+        </div>
+      </div>
+      <div class="row mb-3">
+          <div class="col-sm-10">
+              <textarea type="text" class="form-control" formControlName="messagem" id="messagem" placeholder="Sua messagem" rows="3"></textarea>
+          </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid" (click)="sendForm()">Send</button>
+      <button class="btn btn-primary" style="margin-left: 3px;" [routerLink]="['../contato-list']">list-email</button>
+    </form>
 
-
-
-
-    <!-- <input type="text" [formControl]="cidade"> -->
-
-    <!-- {{cidade.value}}     -->
-
-    <ul>
-      <li *ngFor="let item of contatos | async">
-        nome: {{ item.nome }} 
-        email: {{item.email}}
-      </li>
-    </ul>
-
+  <br>
+  <div  class="enviado" *ngIf="enviado">
+    <img src="../assets/images/enviado.png" alt="">  
+    <h3>Enviado com sucesso!</h3>
   </div>
+  <br>
+  <br>
 
-  
+</div>
+
+</div>
