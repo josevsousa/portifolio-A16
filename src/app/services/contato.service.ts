@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 
 import { iContato } from 'src/app/interfaces/contato';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, getDocs, query, where, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 
@@ -11,21 +11,28 @@ import { Observable } from 'rxjs';
 })
 export class ContatoService {
 
-  firestore: Firestore = inject(Firestore);
-  contato_data$: Observable<iContato[]>;
+  firestore:Firestore = inject(Firestore);
 
-  constructor(
-    ) {
-        const contato_data_colletion = collection(this.firestore, '/contatos');
-        this.contato_data$ = collectionData(contato_data_colletion);
+    addContato(contato: iContato){
+      const contatoAdd = collection(this.firestore, 'contatos');
+      addDoc(contatoAdd, contato);
     }
 
-    addContato(form: iContato){
-      console.log(form);
-    }
+  getContatos(){
+      const contatos = collection(this.firestore, 'contatos');
+      let q = query(contatos);
+      return collectionData(q) as unknown as Observable<iContato[]>;
+  }
 
-    getContatos(){
-      return this.contato_data$;
+  async deleteContato(uid: string){
+    const contatos = collection(this.firestore, 'contatos');
+    let q = query(contatos, where('uid', '==', uid));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach(async (document) => {
+      const docRef = doc(this.firestore, 'contatos', document.id );
+        await deleteDoc(docRef)
+      })
     }
 
 }
