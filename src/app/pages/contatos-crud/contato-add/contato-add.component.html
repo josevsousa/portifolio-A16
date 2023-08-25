@@ -76,31 +76,4 @@
         <br>
         <br>
     </div>
-
-    <div class="players">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">nome</th>
-            <th scope="col">email</th>
-          </tr>
-        </thead>
-        <tbody *ngIf="contatos$ | async as contatos">
-          <tr *ngFor="let contato of contatos; let i = index">
-            <th scope="row">{{i+1}}</th>
-            <td>{{contato.nome}}</td>
-            <td>
-              <li>
-                {{contato.email}}
-              </li>
-            </td>
-            <td>
-              <button class="btn btn-danger" (click)="deleteContato(contato)">Delet</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
 </div>

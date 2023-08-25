@@ -1,0 +1,14 @@
+.jumbotron.center {
+    padding-bottom: 2em;
+}
+
+.jumbotron.center img {
+    width: 35px;
+}
+img.python {
+    width: 84px !important;
+}
+.nav{
+    background: #f5f3f3;
+    margin-bottom: 23px;
+}

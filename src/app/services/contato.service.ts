@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 
 import { iContato } from 'src/app/interfaces/contato';
-import { Firestore, addDoc, collection, collectionData, getDocs, query, where, doc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, getDocs, query, where, doc, deleteDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 

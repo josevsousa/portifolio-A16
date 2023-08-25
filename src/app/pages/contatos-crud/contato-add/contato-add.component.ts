@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './contato-add.component.html',
   styleUrls: ['./contato-add.component.css']
 })
-export class ContatoAddComponent implements OnInit {
+export class ContatoAddComponent {
   contatoService: ContatoService = inject(ContatoService);
   contatos$!: Observable<iContato[]>;
 
@@ -30,9 +30,9 @@ export class ContatoAddComponent implements OnInit {
     }
   );
 
-    ngOnInit(){
-      this.contatos$ = this.contatoService.getContatos();
-    }
+    // ngOnInit(){
+    //   this.contatos$ = this.contatoService.getContatos();
+    // }
 
 
     sendForm(){
@@ -41,10 +41,7 @@ export class ContatoAddComponent implements OnInit {
         ...this.formulario.getRawValue(),
       }as iContato);
       
-      
-      
-      
-      
+    
       this.formulario.reset();
       this.enviado = true;
 
@@ -55,11 +52,11 @@ export class ContatoAddComponent implements OnInit {
 
     }
 
-    deleteContato(contato: iContato){
-      if(confirm(`Quer mesmo deletar ${contato.nome}?`)){
-        this.contatoService.deleteContato(String(contato.uid));
-      }
-    }
+    // deleteContato(contato: iContato){
+    //   if(confirm(`Quer mesmo deletar ${contato.nome}?`)){
+    //     this.contatoService.deleteContato(String(contato.uid));
+    //   }
+    // }
 
 
 
