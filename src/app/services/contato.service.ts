@@ -18,20 +18,20 @@ export class ContatoService {
       addDoc(contatoAdd, contato);
     }
 
-  getContatos(){
+    getContatos(){
       const contatos = collection(this.firestore, 'contatos');
       let q = query(contatos);
       return collectionData(q) as unknown as Observable<iContato[]>;
-  }
+    }
 
-  async deleteContato(uid: string){
-    const contatos = collection(this.firestore, 'contatos');
-    let q = query(contatos, where('uid', '==', uid));
-    const querySnapshot = await getDocs(q);
+    async deleteContato(uid: string){
+      const contatos = collection(this.firestore, 'contatos');
+      let q = query(contatos, where('uid', '==', uid));
+      const querySnapshot = await getDocs(q);
 
-    querySnapshot.forEach(async (document) => {
-      const docRef = doc(this.firestore, 'contatos', document.id );
-        await deleteDoc(docRef)
+      querySnapshot.forEach(async (document) => {
+        const docRef = doc(this.firestore, 'contatos', document.id );
+          await deleteDoc(docRef)
       })
     }
 
